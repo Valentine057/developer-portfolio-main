@@ -5,8 +5,8 @@ export const projectsData = [
         description: "I built a responsive single-page storefront for an organic spice brand called FLAVORS. The app showcases premium spices with sections for best sellers, new arrivals, hot deals, product categories, a gallery, about information, and contact details. It includes product cards, product detail modals, review submission UI, smooth section navigation, visitor count tracking with localStorage, a contact form with toast feedback, and an embedded Google Map for the business location.",
         tools: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'shadcn-ui', 'Radix UI', 'Lucide React', 'React Router DOM', 'React Hook Form', 'Zod', 'TanStack React Query', 'Sonner', 'localStorage', 'Google Maps Embed' ],
         role: 'Frontend Developer',
-        code: 'https://chatgpt.com/c/69fc92c2-12d0-83ea-9b29-7152b4806e29',
-        demo: 'https://chatgpt.com/c/69fc92c2-12d0-83ea-9b29-7152b4806e29'
+        code: 'https://flavor-bloom-spa-main.vercel.app/',
+        demo: ''
     },
 
     {
