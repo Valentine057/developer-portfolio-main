@@ -1,8 +1,14 @@
 // @flow strict
 
+import Link from 'next/link';
 import * as React from 'react';
+import { BsGithub } from 'react-icons/bs';
+import { FaGlobe } from 'react-icons/fa';
 
 function ProjectCard({ project }) {
+  const isUsableLink = (url) => Boolean(url && /^(https?:\/\/|\/)/.test(url));
+  const hasDemo = isUsableLink(project.demo);
+  const hasCode = isUsableLink(project.code);
 
   return (
     <div className="from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37] w-full">
@@ -10,15 +16,46 @@ function ProjectCard({ project }) {
         <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
         <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
       </div>
-      <div className="px-4 lg:px-8 py-3 lg:py-5 relative">
-        <div className="flex flex-row space-x-1 lg:space-x-2 absolute top-1/2 -translate-y-1/2">
-          <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-red-400"></div>
-          <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-orange-400"></div>
-          <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-green-200"></div>
+      <div className="px-4 lg:px-8 py-3 lg:py-5">
+        <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3">
+          <div className="flex flex-row space-x-1 lg:space-x-2">
+            <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-red-400"></div>
+            <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-orange-400"></div>
+            <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-green-200"></div>
+          </div>
+
+          <p className="truncate text-center text-[#16f2b3] text-base lg:text-xl">
+            {project.name}
+          </p>
+
+          <div className="flex min-w-[72px] justify-end gap-2">
+            {hasDemo && (
+              <Link
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${project.name} demo website`}
+                title="Open demo website"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-[#16f2b3]/60 text-[#16f2b3] transition-colors duration-300 hover:bg-[#16f2b3] hover:text-[#0d1224]"
+              >
+                <FaGlobe size={15} />
+              </Link>
+            )}
+
+            {hasCode && (
+              <Link
+                href={project.code}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${project.name} source code`}
+                title="Open source code"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-pink-500/70 text-pink-300 transition-colors duration-300 hover:bg-pink-500 hover:text-white"
+              >
+                <BsGithub size={16} />
+              </Link>
+            )}
+          </div>
         </div>
-        <p className="text-center ml-3 text-[#16f2b3] text-base lg:text-xl">
-          {project.name}
-        </p>
       </div>
       <div className="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 py-4 lg:py-8">
         <code className="font-mono text-xs md:text-sm lg:text-base">
